@@ -9,7 +9,7 @@ viewer chạy trên LAN cho người đứng cánh gà xem bằng điện thoạ
 ![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Windows-lightgrey)
 ![Tests](https://img.shields.io/badge/tests-307-brightgreen)
 
-<!-- TODO: thêm ảnh cửa sổ chính trước khi khoe repo. -->
+![Cửa sổ chính của Tracyy](docs/screenshots/main-window.png)
 
 ## Tính năng
 
@@ -19,6 +19,16 @@ viewer chạy trên LAN cho người đứng cánh gà xem bằng điện thoạ
 - **Waveform** vẽ bằng Qt Quick/Metal, có pyramid LOD và cache envelope trên đĩa
 - **Cue viewer trên LAN** — HTTP + SSE, quét QR là xem được trên điện thoại, không cần cài gì
 - **Tracyy Live** — nhiều máy vào cùng phiên qua LAN, phân quyền sửa cue, thấy con trỏ của nhau
+
+Ảnh trên: playlist bên trái, timeline với waveform của bài đang phát và bài kế
+tiếp đang nạp sẵn, bảng cue bên phải, và các nhóm cue theo màu — Choreo, Audio,
+Video, Notes, Lighting, Pyro, Automation.
+
+![Panel Tracyy Live](docs/screenshots/sync/02-host-permissions.png)
+
+Tracyy Live: máy chính tạo phiên, máy khác vào bằng mã hoặc quét QR, rồi được
+cấp quyền **Biên tập**, **Chỉ sửa cue** hoặc **Chỉ xem**. Mỗi máy vẫn tự phát
+nhạc của nó — không có đồng hồ chung.
 
 Định dạng project là `.Tracyy` (JSON).
 
