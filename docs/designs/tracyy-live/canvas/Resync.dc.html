@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin:0; background:#070A05; color:#E1E5DA;
+           font-family:"Helvetica Neue",-apple-system,"Segoe UI",system-ui,sans-serif; font-size:13px; }
+    a { color:#8BD66A; } a:hover { color:#B4EE9A; }
+    .mono { font-family:Consolas,"SF Mono",Menlo,monospace; }
+    .grp { border:1px solid #34313f; border-radius:8px; position:relative; }
+    .grp-title { position:absolute; top:-8px; left:10px; padding:0 5px; background:#070A05;
+                 color:#B8C9A8; font-size:13px; }
+    .btn { background:#141A11; color:#C3CBBA; border:1px solid #29381F; border-radius:9px;
+           padding:7px 11px; font-size:13px; }
+    .btn-off { opacity:.38; }
+    .pill { padding:5px 9px; border-radius:5px; font-weight:700; font-size:11px;
+            border:1px solid #3F463C; background:#20241F; color:#D8DDD4; }
+    .pill-wait { background:#3B3217; border-color:#8A7225; color:#FFF1B8; }
+    .dot { width:8px; height:8px; border-radius:4px; display:inline-block; flex:none; }
+    .tbl { border:1px solid #223313; border-radius:10px; overflow:hidden; background:#070A05;
+           position:relative; }
+    .th { display:grid; grid-template-columns:140px 120px 96px 1fr; background:#142307;
+          border-bottom:1px solid #315017; color:#F2F2F2; font-size:12px; font-weight:600; }
+    .th > div { padding:6px 5px; text-align:center; }
+    .tr { display:grid; grid-template-columns:140px 120px 96px 1fr; height:40px;
+          align-items:center; background:#0B1007; border-bottom:1px solid #223313; position:relative; }
+    .tr > div { padding:4px 8px; font-size:12px; color:#E1E5DA; overflow:hidden; white-space:nowrap; }
+    .ctype { font-weight:600; text-align:center; }
+    .lane { background:#131B12; border:1px solid #223313; border-radius:8px; padding:8px 10px; }
+    .lane-row { display:flex; align-items:center; gap:8px; height:22px; }
+    .role { font-size:10px; padding:1px 6px; border-radius:4px; border:1px solid #2E3A28;
+            background:#141A11; color:#9BA894; }
+  </style>
+</helmet>
+
+<div style="width:700px; height:660px; box-sizing:border-box; padding:14px;
+            display:flex; flex-direction:column; gap:9px; background:#070A05;">
+
+  <div style="display:flex; align-items:center; gap:10px;">
+    <span style="color:#edf5e8; font-size:14px; font-weight:600;">Đã nối lại — đang đồng bộ</span>
+    <div style="flex-grow:1;"></div>
+    <div class="pill pill-wait" style="display:flex; align-items:center; gap:7px;">
+      <span class="dot" style="background:#E0B341;"></span>ĐANG ĐỒNG BỘ LẠI
+    </div>
+    <div class="pill mono" style="font-weight:600;">rev 128 → 141</div>
+  </div>
+
+  <div class="lane" style="display:flex; flex-direction:column; gap:6px;">
+    <div class="lane-row">
+      <span class="dot" style="background:#E0609C;"></span>
+      <span style="color:#F297C1; font-size:12px; font-weight:600;">Linh</span>
+      <span class="role">Chỉ sửa cue</span>
+      <span style="color:#93A188; font-size:12px;">đang xem waveform</span>
+      <div style="flex-grow:1;"></div>
+      <span style="color:#6F7A67; font-size:11px;">presence đã chạy lại</span>
+    </div>
+    <div class="lane-row">
+      <span class="dot" style="background:#4C8DF6;"></span>
+      <span style="color:#84B7FF; font-size:12px; font-weight:600;">Huy</span>
+      <span class="role">Biên tập</span>
+      <span style="color:#93A188; font-size:12px;">sửa LABEL · Cue 07</span>
+      <div style="flex-grow:1;"></div>
+      <span style="color:#6F7A67; font-size:11px;">presence đã chạy lại</span>
+    </div>
+  </div>
+
+  <div class="grp" style="flex-grow:1; box-sizing:border-box; padding:16px 10px 10px;
+                          display:flex; flex-direction:column; gap:8px; min-height:0;">
+    <div class="grp-title">Cue / Marker Editor</div>
+
+    <div style="display:flex; align-items:center;">
+      <span style="color:#C3CBBA;">Cue Time</span>
+      <div style="flex-grow:1;"></div>
+      <span class="mono" style="color:#46DC00; font-size:18px; font-weight:600;">00:01:13:00</span>
+    </div>
+
+    <div style="display:flex; gap:8px;">
+      <div class="btn btn-off">Add Cue at Playhead</div>
+      <div class="btn btn-off">Import Cue</div>
+      <div class="btn">Export Cue</div>
+    </div>
+
+    <div style="background:#3B3217; border:1px solid #8A7225; border-radius:8px; padding:10px 12px;
+                display:flex; flex-direction:column; gap:8px;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <svg width="15" height="15" viewBox="0 0 15 15" style="flex:none;">
+          <path d="M13 7.5 a5.5 5.5 0 1 1 -1.9 -4.2" fill="none" stroke="#FFF1B8" stroke-width="1.4"/>
+          <polyline points="11.4,0.9 11.4,3.6 8.7,3.6" fill="none" stroke="#FFF1B8" stroke-width="1.4"/>
+        </svg>
+        <span style="color:#FFF1B8; font-size:13px; font-weight:700;">Đang tải 13 thao tác còn thiếu</span>
+        <div style="flex-grow:1;"></div>
+        <span class="mono" style="color:#D9C489; font-size:10px;">journal 129 … 141</span>
+      </div>
+
+      <div style="height:6px; border-radius:3px; background:#241E10; overflow:hidden;">
+        <div style="width:62%; height:6px; border-radius:3px; background:#C79A2B;"></div>
+      </div>
+
+      <div style="color:#EBDCAF; font-size:12px;">
+        Sửa cue mở lại khi tải xong và bản của bạn khớp máy chính. Thao tác của bạn được gửi lại
+        theo thứ tự, không tạo cue trùng.
+      </div>
+    </div>
+
+    <div class="tbl" style="flex-grow:1; min-height:0;">
+      <div class="th"><div>TIME</div><div>CUE TYPE</div><div>CUE</div><div>LABEL</div></div>
+      <div class="tr">
+        <div class="mono">00:01:10:00</div><div class="ctype" style="color:#3d74ff;">Notes</div>
+        <div>Cue 04</div><div>Chuyển cảnh</div></div>
+      <div class="tr">
+        <div class="mono">00:01:17:00</div><div class="ctype" style="color:#1fd95d;">Pyro</div>
+        <div>Cue 05</div><div>Khói vào</div></div>
+      <div class="tr">
+        <div class="mono">00:01:22:12</div><div class="ctype" style="color:#e44343;">Lighting</div>
+        <div>Cue 06</div><div>Blackout</div></div>
+      <div class="tr">
+        <div class="mono">00:01:26:00</div><div class="ctype" style="color:#ff7a45;">Choreo</div>
+        <div>Cue 07</div><div>Mở visual</div></div>
+      <div class="tr">
+        <div class="mono">00:01:35:00</div><div class="ctype" style="color:#2bb9ff;">Audio</div>
+        <div>Cue 08</div><div>Chorus</div></div>
+      <div class="tr">
+        <div class="mono">00:01:42:00</div><div class="ctype" style="color:#7a43ff;">Video</div>
+        <div>Cue 09</div><div>Solo</div></div>
+
+      <div style="position:absolute; inset:0; background:rgba(7,10,5,.38); pointer-events:none;"></div>
+      <div style="position:absolute; right:10px; top:44px; display:flex; align-items:center; gap:6px;
+                  padding:3px 9px; border-radius:12px; background:#3B3217; border:1px solid #8A7225;">
+        <span style="color:#FFF1B8; font-size:11px;">bảng sẽ cập nhật một lần, không nhấp nháy từng dòng</span>
+      </div>
+    </div>
+
+    <div style="color:#8f9f85; font-size:12px;">
+      Không phát lại hiệu ứng cue mới cho cả gói bắt kịp — chỉ áp dụng, rồi mở khóa.
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

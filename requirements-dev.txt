@@ -1,0 +1,7 @@
+# Development and build tooling.
+-r requirements.txt
+
+pytest>=8.3
+ruff>=0.9
+pyinstaller>=6.11,<7
+pillow>=11            # PyInstaller icon conversion

@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# macOS
+.DS_Store
+
+# Tracyy runtime artefacts — máy nào chạy thì máy đó sinh ra, không commit
+license_cache.dat
+license_config.json
+logs/
+*.log
+
+# Bí mật license — xem phần "Trước khi public" trong README
+license_config.enc
+TEST_LICENSE_USB_BETA_V4.json
+
+# Bundle của repo git cũ (9.6 MB) — trùng nội dung, và có thể mang theo
+# cả lịch sử cũ lẫn khoá trong đó
+*.bundle
+
+# Ảnh chụp màn hình rời ở thư mục gốc; ảnh dùng cho README để trong docs/
+/*.png
+
+# Khoá build-time, tách khỏi source (xem tracyy/licensing/build_secrets.py).
+# Mất file này là mất khả năng đọc admin USB token và license_config.enc —
+# sao lưu nó ra chỗ an toàn, nhưng đừng commit.
+license_secrets.json
+
+# Tài liệu nội bộ, không thuộc bản phát hành V2.0.0
+MIGRATION_V1_TO_V2.md
+google_apps_script/
+readme_v1/

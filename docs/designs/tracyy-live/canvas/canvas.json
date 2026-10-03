@@ -1,0 +1,42 @@
+{
+  "pages": [
+    { "id": "page-1", "name": "Màn hình File" },
+    { "id": "page-2", "name": "Quy tắc dựng" }
+  ],
+  "artboards": [
+    { "file": "Main.dc.html",         "page": "page-1", "x": 0,    "y": 0,   "w": 1380, "h": 760, "title": "Đang cộng tác" },
+    { "file": "OutsideView.dc.html",  "page": "page-1", "x": 1480, "y": 0,   "w": 1380, "h": 760, "title": "Khác bài · ngoài vùng nhìn" },
+    { "file": "Reject.dc.html",       "page": "page-1", "x": 0,    "y": 880, "w": 700,  "h": 660, "title": "Bị từ chối" },
+    { "file": "Locked.dc.html",       "page": "page-1", "x": 800,  "y": 880, "w": 700,  "h": 660, "title": "Mất liên lạc" },
+    { "file": "Resync.dc.html",       "page": "page-1", "x": 1600, "y": 880, "w": 700,  "h": 660, "title": "Đang đồng bộ lại" },
+    { "file": "PresenceSpec.dc.html", "page": "page-2", "x": 0,    "y": 0,   "w": 1180, "h": 940, "title": "Lớp hiện diện (T4)" },
+    { "file": "StateMatrix.dc.html",  "page": "page-2", "x": 1280, "y": 0,   "w": 1180, "h": 900, "title": "Trạng thái tài liệu (T2)" }
+  ],
+  "annotations": [
+    {
+      "id": "note-1",
+      "page": "page-1",
+      "x": 0,
+      "y": -170,
+      "w": 700,
+      "text": "T4 và T2 dùng chung một màn.\nMàu người = ai đang ở đâu. Vàng nét đứt = thao tác của bạn chưa được máy chính nhận. Hai thứ không bao giờ dùng chung màu."
+    },
+    {
+      "id": "note-2",
+      "page": "page-1",
+      "x": 2400,
+      "y": 880,
+      "w": 300,
+      "text": "Ba trạng thái đều khoá sửa cue, khác nhau ở lý do và ở việc người dùng làm tiếp.\nĐây là chỗ dễ code sai nhất: nối lại được mạng chưa phải là mở khoá."
+    },
+    {
+      "id": "note-3",
+      "page": "page-2",
+      "x": 0,
+      "y": -170,
+      "w": 700,
+      "text": "Hai tờ này là phần mang đi code: số đo, khoá neo presence, và bảng ánh xạ reason của máy chính sang cái người dùng nhìn thấy."
+    }
+  ],
+  "launch": { "view": "canvas", "page": "page-1" }
+}

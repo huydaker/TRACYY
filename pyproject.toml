@@ -1,0 +1,75 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tracyy"
+version = "2.1.0"
+description = "LTC-synchronised show playback with cue sheets and a LAN cue viewer"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "LicenseRef-Proprietary"
+authors = [{ name = "Tracyy" }]
+
+dependencies = [
+    "PySide6>=6.9,<7",
+    "numpy>=2.1,<3",
+    "sounddevice>=0.5.1,<1",
+    "soundfile>=0.13,<1",
+    "soxr>=0.5,<2",
+    "av>=14,<19",
+    "certifi>=2025.1.31",
+    "cryptography>=45,<47",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3", "pytest-timeout>=2.3", "ruff>=0.9"]
+build = ["pyinstaller>=6.11"]
+
+[project.scripts]
+tracyy = "tracyy.app:main"
+
+[tool.setuptools.packages.find]
+include = ["tracyy*"]
+
+[tool.setuptools.package-data]
+"tracyy.gpu" = ["*.qml"]
+"tracyy.server" = ["assets/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["error::DeprecationWarning:tracyy.*"]
+
+[tool.ruff]
+line-length = 96
+target-version = "py311"
+extend-exclude = ["readme_v1", "build", "dist"]
+
+[tool.ruff.lint]
+select = [
+    "E",    # pycodestyle
+    "F",    # pyflakes
+    "I",    # import order
+    "UP",   # pyupgrade
+    "B",    # bugbear
+    "C4",   # comprehensions
+    "SIM",  # simplify
+    "RUF",
+]
+ignore = [
+    "E501",   # long lines are handled by the formatter
+    "B008",
+    "SIM105", # contextlib.suppress is not always clearer here
+    "SIM102", # nested guards read better than one long boolean in these paths
+    "RUF001", # Vietnamese strings contain non-ASCII punctuation on purpose
+    "RUF002",
+    "RUF003",
+    "UP042", # str+Enum keeps str(x) == "Tier.PLAYHEAD"; StrEnum would change it
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["SLF001"]
+
+[tool.ruff.format]
+quote-style = "double"

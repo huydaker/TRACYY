@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin:0; background:#070A05; color:#E1E5DA;
+           font-family:"Helvetica Neue",-apple-system,"Segoe UI",system-ui,sans-serif; font-size:13px; }
+    a { color:#8BD66A; } a:hover { color:#B4EE9A; }
+    .mono { font-family:Consolas,"SF Mono",Menlo,monospace; }
+    .card { border:1px solid #223313; border-radius:10px; background:#0B1007; padding:14px 16px; }
+    .h { color:#B8C9A8; font-size:11px; font-weight:700; letter-spacing:1.2px; }
+    .note { color:#8f9f85; font-size:12px; line-height:1.55; }
+    .key { color:#C3CBBA; }
+    .tag { display:inline-flex; align-items:center; height:22px; padding:0 8px; border-radius:6px;
+           background:#18201d; font-size:10px; line-height:1; }
+    .role { font-size:10px; padding:1px 6px; border-radius:4px; border:1px solid #2E3A28;
+            background:#141A11; color:#9BA894; }
+    .dot { width:8px; height:8px; border-radius:4px; display:inline-block; flex:none; }
+    .rule { display:grid; grid-template-columns:200px 1fr; gap:10px 16px; font-size:12px; }
+    .rule > .k { color:#9BA894; }
+    .rule > .v { color:#D6DECC; }
+    .no { display:flex; gap:8px; align-items:flex-start; font-size:12px; color:#D6DECC; }
+    .cal { color:#6F7A67; font-size:10px; }
+  </style>
+</helmet>
+
+<div style="width:1180px; height:940px; box-sizing:border-box; padding:24px 24px 20px;
+            background:#070A05; display:flex; flex-direction:column; gap:14px;">
+
+  <div style="display:flex; align-items:baseline; gap:12px;">
+    <span style="color:#edf5e8; font-size:18px; font-weight:600;">Lớp hiện diện — quy tắc dựng</span>
+    <span class="note">T4 · áp dụng cho waveform và bảng cue trong màn File</span>
+  </div>
+
+  <div style="display:flex; gap:14px;">
+
+    <!-- identity colours -->
+    <div class="card" style="width:372px;">
+      <div class="h">MÀU ĐỊNH DANH</div>
+      <div class="note" style="margin:6px 0 12px;">
+        Cấp theo thứ tự vào phiên, lấy thẳng từ <span class="mono key">PEER_COLOURS</span>.
+        Trên nền waveform <span class="mono key">#070A05</span> dùng bản sáng hơn để đường mảnh còn đọc được.
+      </div>
+      <div style="display:flex; flex-direction:column; gap:7px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="dot" style="background:#4C8DF6; width:14px; height:14px; border-radius:7px;"></span>
+          <span class="mono" style="font-size:11px; color:#9BA894; width:70px;">#4C8DF6</span>
+          <svg width="46" height="14"><line x1="0" y1="7" x2="46" y2="7" stroke="#84B7FF"
+            stroke-width="1.1" stroke-dasharray="4 3"/></svg>
+          <span class="mono" style="font-size:11px; color:#84B7FF;">#84B7FF</span>
+          <div style="flex-grow:1;"></div><span class="cal">người 1</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="dot" style="background:#E0609C; width:14px; height:14px; border-radius:7px;"></span>
+          <span class="mono" style="font-size:11px; color:#9BA894; width:70px;">#E0609C</span>
+          <svg width="46" height="14"><line x1="0" y1="7" x2="46" y2="7" stroke="#F297C1"
+            stroke-width="1.1" stroke-dasharray="4 3"/></svg>
+          <span class="mono" style="font-size:11px; color:#F297C1;">#F297C1</span>
+          <div style="flex-grow:1;"></div><span class="cal">người 2</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="dot" style="background:#F0A030; width:14px; height:14px; border-radius:7px;"></span>
+          <span class="mono" style="font-size:11px; color:#9BA894; width:70px;">#F0A030</span>
+          <svg width="46" height="14"><line x1="0" y1="7" x2="46" y2="7" stroke="#FFC271"
+            stroke-width="1.1" stroke-dasharray="4 3"/></svg>
+          <span class="mono" style="font-size:11px; color:#FFC271;">#FFC271</span>
+          <div style="flex-grow:1;"></div><span class="cal">người 3</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span class="dot" style="background:#33B9A6; width:14px; height:14px; border-radius:7px;"></span>
+          <span class="mono" style="font-size:11px; color:#9BA894; width:70px;">#33B9A6</span>
+          <svg width="46" height="14"><line x1="0" y1="7" x2="46" y2="7" stroke="#6FE0D0"
+            stroke-width="1.1" stroke-dasharray="4 3"/></svg>
+          <span class="mono" style="font-size:11px; color:#6FE0D0;">#6FE0D0</span>
+          <div style="flex-grow:1;"></div><span class="cal">người 4</span>
+        </div>
+      </div>
+      <div class="note" style="margin-top:12px; padding-top:10px; border-top:1px solid #1B2712;">
+        Màu người <span class="key">không bao giờ</span> thay màu cue type. Cue type giữ nguyên
+        <span class="mono" style="color:#ff7a45;">#ff7a45</span>
+        <span class="mono" style="color:#2bb9ff;">#2bb9ff</span>
+        <span class="mono" style="color:#7a43ff;">#7a43ff</span>
+        <span class="mono" style="color:#3d74ff;">#3d74ff</span>
+        <span class="mono" style="color:#e44343;">#e44343</span>
+        <span class="mono" style="color:#1fd95d;">#1fd95d</span> — người chỉ được viền và nhãn.
+      </div>
+    </div>
+
+    <!-- anatomy -->
+    <div class="card" style="flex-grow:1;">
+      <div class="h">GIẢI PHẪU</div>
+
+      <div style="margin-top:12px; display:flex; gap:26px; align-items:flex-start;">
+        <div>
+          <div class="cal" style="margin-bottom:6px;">hàng hiện diện · cao 22px, gap 6px</div>
+          <div style="background:#131B12; border:1px solid #223313; border-radius:8px; padding:8px 10px;
+                      width:400px;">
+            <div style="display:flex; align-items:center; gap:8px; height:22px;">
+              <span class="dot" style="background:#E0609C;"></span>
+              <span style="color:#F297C1; font-size:12px; font-weight:600;">Linh</span>
+              <span class="role">Chỉ sửa cue</span>
+              <span class="mono" style="color:#A8B49E; font-size:12px;">01:12</span>
+              <span style="color:#93A188; font-size:12px;">chọn Cue 05</span>
+            </div>
+          </div>
+          <div style="display:flex; gap:6px; margin-top:6px; color:#6F7A67; font-size:10px;">
+            <span>chấm 8px</span><span>·</span><span>tên 12/600 màu người</span><span>·</span>
+            <span>quyền 10px</span><span>·</span><span>giờ mono</span><span>·</span><span>việc đang làm</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="cal" style="margin-bottom:6px;">con trỏ + nhãn</div>
+          <div style="position:relative; width:150px; height:52px; background:#0B1007;
+                      border:1px solid #1B2712; border-radius:6px;">
+            <svg width="150" height="52">
+              <polygon points="18,10 20,28 26,22 32,21" fill="#84B7FF" stroke="#070A05" stroke-width="1"/>
+              <line x1="18" y1="34" x2="18" y2="46" stroke="#2E3A28" stroke-width="1"/>
+              <line x1="36" y1="14" x2="36" y2="6" stroke="#2E3A28" stroke-width="1"/>
+            </svg>
+            <div class="tag" style="position:absolute; left:36px; top:14px;
+                                    color:#84B7FF; border:1px solid #84B7FF;">Huy</div>
+            <span class="cal" style="position:absolute; left:8px; bottom:2px;">14×18</span>
+            <span class="cal" style="position:absolute; right:6px; top:1px;">h22 · r6 · 10px</span>
+          </div>
+          <div class="note" style="width:150px; margin-top:6px; font-size:11px;">
+            Nhãn đặt sau mũi tên, không đè chữ của dòng dưới.
+          </div>
+        </div>
+
+        <div>
+          <div class="cal" style="margin-bottom:6px;">viền theo phạm vi</div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="position:relative; width:196px; height:34px; background:#0B1007;
+                        border-bottom:1px solid #223313;">
+              <div style="position:absolute; inset:2px; border:1.2px solid #F297C1; border-radius:5px;"></div>
+              <span style="position:absolute; left:10px; top:9px; font-size:11px; color:#D6DECC;">chọn cả dòng</span>
+              <span class="cal" style="position:absolute; right:8px; top:11px;">1.2px</span>
+            </div>
+            <div style="position:relative; width:196px; height:34px; background:#0B1007;
+                        border-bottom:1px solid #223313;">
+              <div style="position:absolute; left:96px; right:2px; top:2px; bottom:2px;
+                          border:1.5px solid #84B7FF; border-radius:5px;"></div>
+              <span style="position:absolute; left:10px; top:9px; font-size:11px; color:#D6DECC;">đang sửa 1 ô</span>
+              <span class="cal" style="position:absolute; right:8px; top:11px;">1.5px</span>
+            </div>
+          </div>
+          <div class="note" style="width:196px; margin-top:6px; font-size:11px;">
+            Viền hiện diện không có nghĩa là ô bị khóa. Xung đột do máy chính xử lý.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- anchoring -->
+  <div class="card">
+    <div class="h">NEO VỊ TRÍ — KHÔNG NEO THEO PIXEL, KHÔNG NEO THEO SỐ DÒNG</div>
+    <div style="display:flex; gap:24px; margin-top:12px;">
+      <div style="width:560px;">
+        <div class="cal" style="margin-bottom:6px;">waveform — neo theo giây trong bài</div>
+        <div style="position:relative; background:#070A05; border:1px solid #1B2712; border-radius:6px;">
+          <svg viewBox="0 0 560 72" width="558" height="72" style="display:block;">
+            <path d="M0,28.8 L7,18.3 L13,22.4 L20,9.4 L26,20.5 L33,14.7 L39,20.1 L46,18.5 L52,28.0 L59,21.4 L65,25.3 L72,15.0 L78,22.3 L85,17.5 L91,17.1 L98,21.7 L104,27.5 L111,24.5 L117,25.5 L124,23.6 L130,19.3 L137,15.6 L143,22.2 L150,20.4 L156,27.2 L163,27.5 L169,28.5 L176,25.7 L182,17.3 L189,19.4 L195,13.8 L202,21.1 L208,23.4 L215,25.4 L221,26.8 L228,27.4 L234,21.7 L241,18.3 L247,21.0 L254,23.0 L260,19.6 L267,25.7 L273,27.7 L280,27.0 L287,24.5 L293,18.3 L300,16.9 L306,22.4 L313,16.4 L319,26.6 L326,24.9 L332,28.9 L339,20.6 L345,24.8 L352,14.5 L358,22.2 L365,14.7 L371,21.7 L378,20.0 L384,27.7 L391,20.0 L397,24.0 L404,12.5 L410,22.3 L417,11.9 L423,23.4 L430,15.8 L436,25.7 L443,21.8 L449,26.8 L456,13.8 L462,18.3 L469,17.2 L475,18.4 L482,15.6 L488,26.7 L495,23.8 L501,26.0 L508,17.1 L514,22.0 L521,17.5 L527,21.9 L534,18.9 L540,25.3 L547,26.7 L553,27.5 L560,26.1 L560,37.9 L553,36.5 L547,37.3 L540,38.7 L534,45.1 L527,42.1 L521,46.5 L514,42.0 L508,46.9 L501,38.0 L495,40.2 L488,37.3 L482,48.4 L475,45.6 L469,46.8 L462,45.7 L456,50.2 L449,37.2 L443,42.2 L436,38.3 L430,48.2 L423,40.6 L417,52.1 L410,41.7 L404,51.5 L397,40.0 L391,44.0 L384,36.3 L378,44.0 L371,42.3 L365,49.3 L358,41.8 L352,49.5 L345,39.2 L339,43.4 L332,35.1 L326,39.1 L319,37.4 L313,47.6 L306,41.6 L300,47.1 L293,45.7 L287,39.5 L280,37.0 L273,36.3 L267,38.3 L260,44.4 L254,41.0 L247,43.0 L241,45.7 L234,42.3 L228,36.6 L221,37.2 L215,38.6 L208,40.6 L202,42.9 L195,50.2 L189,44.6 L182,46.7 L176,38.3 L169,35.5 L163,36.5 L156,36.8 L150,43.6 L143,41.8 L137,48.4 L130,44.7 L124,40.4 L117,38.5 L111,39.5 L104,36.5 L98,42.3 L91,46.9 L85,46.5 L78,41.7 L72,49.0 L65,38.7 L59,42.6 L52,36.0 L46,45.5 L39,43.9 L33,49.3 L26,43.5 L20,54.6 L13,41.6 L7,45.7 L0,35.2 Z" transform="translate(0,4)" fill="#70756F"/>
+            <rect x="0" y="4" width="150" height="64" fill="#000000" opacity="0.70"/>
+            <rect x="149" y="4" width="2" height="64" fill="#D9FFE1"/>
+            <line x1="300" y1="12" x2="300" y2="68" stroke="#F297C1" stroke-width="1.1" stroke-dasharray="4 3"/>
+            <circle cx="300" cy="9" r="3" fill="#F297C1"/>
+            <line x1="452" y1="12" x2="452" y2="68" stroke="#84B7FF" stroke-width="1.1" stroke-dasharray="4 3"/>
+            <circle cx="452" cy="9" r="3" fill="#84B7FF"/>
+          </svg>
+        </div>
+        <div class="rule" style="margin-top:10px;">
+          <span class="k">Khoá neo</span>
+          <span class="v mono">track_id + position_seconds</span>
+          <span class="k">Zoom / cuộn khác nhau</span>
+          <span class="v">máy nhận tự quy ra pixel theo viewport của mình</span>
+          <span class="k">Playhead người khác</span>
+          <span class="v">nét đứt 1.1px, chấm r3 ở đỉnh — không lẫn với playhead của mình
+            (<span class="mono">#D9FFE1</span>, liền, 2px)</span>
+          <span class="k">Nội suy</span>
+          <span class="v">làm mượt giữa hai gói, giới hạn ngoại suy; không gọi seek/play cục bộ</span>
+        </div>
+      </div>
+
+      <div style="flex-grow:1;">
+        <div class="cal" style="margin-bottom:6px;">bảng cue — neo theo cue, không theo dòng</div>
+        <div style="border:1px solid #223313; border-radius:8px; overflow:hidden;">
+          <div style="display:grid; grid-template-columns:104px 92px 1fr; background:#142307;
+                      color:#F2F2F2; font-size:11px; font-weight:600; border-bottom:1px solid #315017;">
+            <div style="padding:5px; text-align:center;">TIME</div>
+            <div style="padding:5px; text-align:center;">CUE</div>
+            <div style="padding:5px; text-align:center;">LABEL</div>
+          </div>
+          <div style="display:grid; grid-template-columns:104px 92px 1fr; height:34px; align-items:center;
+                      background:#0B1007; border-bottom:1px solid #223313; font-size:11px;">
+            <div class="mono" style="padding:0 8px;">00:01:17</div><div style="padding:0 8px;">Cue 05</div>
+            <div style="padding:0 8px;">Khói vào</div>
+          </div>
+          <div style="position:relative; display:grid; grid-template-columns:104px 92px 1fr; height:34px;
+                      align-items:center; background:#0B1007; font-size:11px;">
+            <div class="mono" style="padding:0 8px;">00:01:22</div><div style="padding:0 8px;">Cue 06</div>
+            <div style="padding:0 8px;">Blackout</div>
+            <div style="position:absolute; left:196px; right:2px; top:2px; bottom:2px;
+                        border:1.5px solid #84B7FF; border-radius:5px;"></div>
+          </div>
+        </div>
+        <div class="rule" style="margin-top:10px;">
+          <span class="k">Khoá neo</span>
+          <span class="v mono">cue_id + column_key</span>
+          <span class="k">Sắp xếp lại / lọc</span>
+          <span class="v">viền đi theo cue, không ở lại dòng cũ</span>
+          <span class="k">Cue ngoài vùng nhìn</span>
+          <span class="v">chỉ báo ở mép bảng + nút <span class="key">Đi tới cue</span>; không tự cuộn</span>
+          <span class="k">Khác bài</span>
+          <span class="v">chỉ hiện tên bài ở hàng hiện diện; không vẽ gì lên bài đang mở</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:14px;">
+    <div class="card" style="width:520px;">
+      <div class="h">KÊNH PRESENCE — TÁCH KHỎI JOURNAL CUE</div>
+      <div class="rule" style="margin-top:12px;">
+        <span class="k">Tần suất phát</span><span class="v">gộp còn ~10 gói/giây mỗi máy, đo rồi mới tăng</span>
+        <span class="k">Thứ tự</span><span class="v"><span class="mono">sequence</span> tăng dần; gói cũ đến sau thì bỏ</span>
+        <span class="k">TTL</span><span class="v">4 giây không có tin thì con trỏ biến mất, tên vẫn còn ở hàng hiện diện</span>
+        <span class="k">Độ bền</span><span class="v">không ghi journal, không tăng revision, mất gói là bình thường</span>
+        <span class="k">Nội dung</span>
+        <span class="v mono" style="font-size:11px;">track_id · surface · cue_id · column_key ·
+          position_seconds · playing · activity · sequence</span>
+      </div>
+      <div class="note" style="margin-top:12px; padding-top:10px; border-top:1px solid #1B2712;">
+        Heartbeat 1,5 giây hiện tại là nhịp của roster, không đủ cho con trỏ.
+        Con trỏ và commit cue đi chung một kênh đẩy, khác nhau ở độ bền chứ không ở đường truyền.
+      </div>
+    </div>
+
+    <div class="card" style="flex-grow:1;">
+      <div class="h">KHÔNG ĐƯỢC LÀM</div>
+      <div style="margin-top:12px; display:flex; flex-direction:column; gap:9px;">
+        <div class="no"><svg width="12" height="12" viewBox="0 0 12 12" style="flex:none; margin-top:2px;"><line x1="2" y1="2" x2="10" y2="10" stroke="#E86A6A" stroke-width="1.6"/><line x1="10" y1="2" x2="2" y2="10" stroke="#E86A6A" stroke-width="1.6"/></svg>
+          <span>Tự cuộn bảng hay tự seek theo người khác — playhead người khác chỉ để nhìn.</span></div>
+        <div class="no"><svg width="12" height="12" viewBox="0 0 12 12" style="flex:none; margin-top:2px;"><line x1="2" y1="2" x2="10" y2="10" stroke="#E86A6A" stroke-width="1.6"/><line x1="10" y1="2" x2="2" y2="10" stroke="#E86A6A" stroke-width="1.6"/></svg>
+          <span>Đổi selection cục bộ, đổi focus, hay che editor đang mở.</span></div>
+        <div class="no"><svg width="12" height="12" viewBox="0 0 12 12" style="flex:none; margin-top:2px;"><line x1="2" y1="2" x2="10" y2="10" stroke="#E86A6A" stroke-width="1.6"/><line x1="10" y1="2" x2="2" y2="10" stroke="#E86A6A" stroke-width="1.6"/></svg>
+          <span>Lớp overlay nhận chuột/bàn phím — phải trong suốt với input.</span></div>
+        <div class="no"><svg width="12" height="12" viewBox="0 0 12 12" style="flex:none; margin-top:2px;"><line x1="2" y1="2" x2="10" y2="10" stroke="#E86A6A" stroke-width="1.6"/><line x1="10" y1="2" x2="2" y2="10" stroke="#E86A6A" stroke-width="1.6"/></svg>
+          <span>Dựng lại toàn bảng mỗi tick presence — chỉ vẽ lại vùng viền đổi.</span></div>
+        <div class="no"><svg width="12" height="12" viewBox="0 0 12 12" style="flex:none; margin-top:2px;"><line x1="2" y1="2" x2="10" y2="10" stroke="#E86A6A" stroke-width="1.6"/><line x1="10" y1="2" x2="2" y2="10" stroke="#E86A6A" stroke-width="1.6"/></svg>
+          <span>Giữ con trỏ của người đã rời hay đã đổi bài — không có “người ma”.</span></div>
+        <div class="no"><svg width="12" height="12" viewBox="0 0 12 12" style="flex:none; margin-top:2px;"><line x1="2" y1="2" x2="10" y2="10" stroke="#E86A6A" stroke-width="1.6"/><line x1="10" y1="2" x2="2" y2="10" stroke="#E86A6A" stroke-width="1.6"/></svg>
+          <span>Dùng <span class="mono">track_path</span> làm danh tính bài — Mac và Windows không khớp,
+            và đường dẫn ổ đĩa không nên phát ra cả phiên.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

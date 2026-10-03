@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin:0; background:#070A05; color:#E1E5DA;
+           font-family:"Helvetica Neue",-apple-system,"Segoe UI",system-ui,sans-serif; font-size:13px; }
+    a { color:#8BD66A; } a:hover { color:#B4EE9A; }
+    .mono { font-family:Consolas,"SF Mono",Menlo,monospace; }
+    .grp { border:1px solid #34313f; border-radius:8px; position:relative; }
+    .grp-title { position:absolute; top:-8px; left:10px; padding:0 5px; background:#070A05;
+                 color:#B8C9A8; font-size:13px; }
+    .btn { background:#141A11; color:#C3CBBA; border:1px solid #29381F; border-radius:9px;
+           padding:7px 11px; font-size:13px; }
+    .pill { padding:5px 9px; border-radius:5px; font-weight:700; font-size:11px;
+            border:1px solid #3F463C; background:#20241F; color:#D8DDD4; }
+    .pill-ok { background:#173B24; border-color:#2F7A44; color:#DDFBE5; }
+    .dot { width:8px; height:8px; border-radius:4px; display:inline-block; flex:none; }
+    .tbl { border:1px solid #223313; border-radius:10px; overflow:hidden; background:#070A05;
+           position:relative; }
+    .th { display:grid; grid-template-columns:150px 142px 104px 250px; background:#142307;
+          border-bottom:1px solid #315017; color:#F2F2F2; font-size:12px; font-weight:600; }
+    .th > div { padding:6px 5px; text-align:center; }
+    .tr { display:grid; grid-template-columns:150px 142px 104px 250px; height:40px;
+          align-items:center; background:#0B1007; border-bottom:1px solid #223313; position:relative; }
+    .tr > div { padding:4px 8px; font-size:12px; color:#E1E5DA; overflow:hidden; white-space:nowrap; }
+    .tr.sel { background:#242A22; }
+    .ctype { font-weight:600; text-align:center; }
+    .tag { display:inline-flex; align-items:center; height:22px; padding:0 8px; border-radius:6px;
+           background:#18201d; font-size:10px; line-height:1; }
+    .lane { background:#131B12; border:1px solid #223313; border-radius:8px; padding:8px 10px; }
+    .lane-row { display:flex; align-items:center; gap:8px; height:22px; }
+    .lane-act { color:#93A188; font-size:12px; }
+    .chip { border-radius:13px; background:#070A05; padding:5px 10px; font-size:11px; }
+    .role { font-size:10px; padding:1px 6px; border-radius:4px; border:1px solid #2E3A28;
+            background:#141A11; color:#9BA894; }
+    .cueload { height:34px; border-radius:9px; display:flex; align-items:center;
+               justify-content:space-between; padding:0 14px; color:#ffffff;
+               font-size:12px; font-weight:600; box-sizing:border-box; }
+  </style>
+</helmet>
+
+<div style="width:1380px; height:760px; box-sizing:border-box; padding:14px 14px 12px;
+            display:flex; flex-direction:column; gap:10px; background:#070A05;">
+
+  <div style="display:flex; align-items:center; gap:12px;">
+    <div style="color:#edf5e8; font-size:16px; font-weight:600;">FILE&nbsp; /&nbsp; Phiên dựng cue</div>
+    <div style="flex-grow:1;"></div>
+    <div class="pill pill-ok" style="display:flex; align-items:center; gap:7px;">
+      <span class="dot" style="background:#46DC00;"></span>ĐÃ KẾT NỐI · 3 NGƯỜI
+    </div>
+    <div class="pill mono" style="font-weight:600;">rev 128</div>
+  </div>
+
+  <div style="display:flex; gap:12px; flex-grow:1; min-height:0;">
+
+    <div style="width:670px; display:flex; flex-direction:column; gap:8px;">
+
+      <div style="display:flex; gap:8px;">
+        <div class="chip" style="color:#ff7a45; border:1px solid #ff7a45;">1 · Choreo</div>
+        <div class="chip" style="color:#2bb9ff; border:1px solid #2bb9ff;">2 · Audio</div>
+        <div class="chip" style="color:#7a43ff; border:1px solid #7a43ff;">3 · Video</div>
+        <div class="chip" style="color:#3d74ff; border:1px solid #3d74ff;">4 · Notes</div>
+        <div class="chip" style="color:#e44343; border:1px solid #e44343;">5 · Lighting</div>
+      </div>
+
+      <div class="lane" style="display:flex; flex-direction:column; gap:6px;">
+        <div class="lane-row">
+          <span class="dot" style="background:#E0609C; opacity:.55;"></span>
+          <span style="color:#B98298; font-size:12px; font-weight:600;">Linh</span>
+          <span class="role">Chỉ sửa cue</span>
+          <span class="mono" style="color:#7E8A76; font-size:12px;">03:12</span>
+          <span class="lane-act" style="color:#7E8A76;">đang mở bài khác</span>
+          <div style="flex-grow:1;"></div>
+          <span style="color:#B98298; font-size:11px;">NEON CITY — INTRO EDIT</span>
+        </div>
+        <div class="lane-row">
+          <span class="dot" style="background:#4C8DF6;"></span>
+          <span style="color:#84B7FF; font-size:12px; font-weight:600;">Huy</span>
+          <span class="role">Biên tập</span>
+          <span class="mono" style="color:#A8B49E; font-size:12px;">02:41</span>
+          <span class="lane-act">chọn Cue 20 · Kết show</span>
+          <div style="flex-grow:1;"></div>
+          <span style="color:#6F7A67; font-size:11px;">cùng bài · ngoài vùng bảng</span>
+        </div>
+      </div>
+
+      <div class="grp" style="padding:14px 10px 10px;">
+        <div class="grp-title">Timeline</div>
+        <div style="position:relative; background:#070A05; height:170px;">
+          <div style="display:flex; align-items:center; padding:4px 4px 0; color:#ffffff; font-size:13px;">
+            <span>CHỜ THÊM MỘT PHÚT · 01:00 — 01:30</span>
+            <div style="flex-grow:1;"></div><span>1×</span>
+          </div>
+          <svg viewBox="0 0 620 140" width="620" height="140" style="display:block; margin-top:4px;">
+            <path d="M0,59.1 L5,49.9 L11,49.2 L16,39.8 L21,33.5 L26,42.4 L32,31.9 L37,20.4 L42,46.1 L47,45.9 L53,45.1 L58,54.1 L63,58.0 L68,53.9 L74,44.4 L79,40.3 L84,43.6 L89,30.6 L95,20.9 L100,46.6 L105,44.4 L110,34.4 L116,57.3 L121,55.3 L126,51.8 L131,53.6 L137,50.7 L142,45.6 L147,28.5 L152,30.5 L158,28.5 L163,43.2 L168,31.0 L173,48.8 L179,54.3 L184,46.8 L189,53.6 L194,48.2 L200,45.1 L205,47.4 L210,26.3 L215,36.1 L221,45.3 L226,34.3 L231,52.8 L236,51.5 L242,41.0 L247,58.7 L252,49.8 L257,43.2 L263,46.2 L268,46.9 L273,29.1 L278,45.4 L284,35.9 L289,51.8 L294,51.8 L299,41.0 L305,56.3 L310,55.2 L315,36.4 L321,46.5 L326,38.8 L331,38.2 L336,37.3 L342,42.5 L347,36.0 L352,43.3 L357,50.0 L363,58.5 L368,54.8 L373,38.2 L378,54.6 L384,40.2 L389,17.6 L394,38.3 L399,40.2 L405,34.3 L410,39.2 L415,50.7 L420,55.6 L426,58.6 L431,44.6 L436,51.9 L441,49.9 L447,28.0 L452,47.0 L457,40.5 L462,18.3 L468,41.1 L473,50.0 L478,45.4 L483,56.9 L489,53.8 L494,57.6 L499,53.7 L504,36.7 L510,44.6 L515,29.3 L520,26.8 L525,44.5 L531,43.0 L536,37.1 L541,56.0 L546,53.5 L552,54.9 L557,51.8 L562,39.8 L567,34.7 L573,33.2 L578,22.4 L583,31.2 L588,44.0 L594,34.8 L599,47.4 L604,55.0 L609,48.9 L615,56.1 L620,43.8 L620,88.2 L615,75.9 L609,83.1 L604,77.0 L599,84.6 L594,97.2 L588,88.0 L583,100.8 L578,109.6 L573,98.8 L567,97.3 L562,92.2 L557,80.2 L552,77.1 L546,78.5 L541,76.0 L536,94.9 L531,89.0 L525,87.5 L520,105.2 L515,102.7 L510,87.4 L504,95.3 L499,78.3 L494,74.4 L489,78.2 L483,75.1 L478,86.6 L473,82.0 L468,90.9 L462,113.7 L457,91.5 L452,85.0 L447,104.0 L441,82.1 L436,80.1 L431,87.4 L426,73.4 L420,76.4 L415,81.3 L410,92.8 L405,97.7 L399,91.8 L394,93.7 L389,114.4 L384,91.8 L378,77.4 L373,93.8 L368,77.2 L363,73.5 L357,82.0 L352,88.7 L347,96.0 L342,89.5 L336,94.7 L331,93.8 L326,93.2 L321,85.5 L315,95.6 L310,76.8 L305,75.7 L299,91.0 L294,80.2 L289,80.2 L284,96.1 L278,86.6 L273,102.9 L268,85.1 L263,85.8 L257,88.8 L252,82.2 L247,73.3 L242,91.0 L236,80.5 L231,79.2 L226,97.7 L221,86.7 L215,95.9 L210,105.7 L205,84.6 L200,86.9 L194,83.8 L189,78.4 L184,85.2 L179,77.7 L173,83.2 L168,101.0 L163,88.8 L158,103.5 L152,101.5 L147,103.5 L142,86.4 L137,81.3 L131,78.4 L126,80.2 L121,76.7 L116,74.7 L110,97.6 L105,87.6 L100,85.4 L95,111.1 L89,101.4 L84,88.4 L79,91.7 L74,87.6 L68,78.1 L63,74.0 L58,77.9 L53,86.9 L47,86.1 L42,85.9 L37,111.6 L32,100.1 L26,89.6 L21,98.5 L16,92.2 L11,82.8 L5,82.1 L0,72.9 Z" transform="translate(0,4)" fill="#70756F"/>
+            <rect x="0" y="4" width="248" height="132" fill="#000000" opacity="0.70"/>
+            <g>
+              <rect x="86" y="8" width="7" height="9" rx="1.8" fill="#7a43ff"/>
+              <rect x="88.4" y="17" width="2" height="119" fill="#7a43ff"/>
+              <rect x="168" y="8" width="7" height="9" rx="1.8" fill="#3d74ff"/>
+              <rect x="170.4" y="17" width="2" height="119" fill="#3d74ff"/>
+              <rect x="286" y="8" width="7" height="9" rx="1.8" fill="#1fd95d"/>
+              <rect x="288.4" y="17" width="2" height="119" fill="#1fd95d"/>
+              <rect x="372" y="8" width="7" height="9" rx="1.8" fill="#e44343"/>
+              <rect x="374.4" y="17" width="2" height="119" fill="#e44343"/>
+              <rect x="520" y="8" width="7" height="9" rx="1.8" fill="#2bb9ff"/>
+              <rect x="522.4" y="17" width="2" height="119" fill="#2bb9ff"/>
+            </g>
+            <rect x="247" y="4" width="2" height="132" fill="#D9FFE1"/>
+            <line x1="596" y1="16" x2="596" y2="136" stroke="#84B7FF" stroke-width="1.1" stroke-dasharray="4 3"/>
+            <circle cx="596" cy="12" r="3" fill="#84B7FF"/>
+          </svg>
+          <div class="tag" style="position:absolute; right:12px; top:30px;
+                                  color:#84B7FF; border:1px solid #84B7FF;">Huy · 02:41</div>
+        </div>
+        <div style="display:flex; align-items:center; margin-top:6px;">
+          <span style="color:#7E8A76; font-size:11px;">Linh ở bài khác — không vẽ con trỏ lên bài đang mở</span>
+          <div style="flex-grow:1;"></div>
+          <div style="display:flex; gap:8px;">
+            <div class="btn">Follow</div><div class="btn">Zoom +</div>
+            <div class="btn">Zoom −</div><div class="btn">Fit</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:6px;">
+        <div class="cueload" style="background:rgba(31,217,93,.35);">
+          <span>Pyro&nbsp; ·&nbsp; Khói vào</span><span class="mono">−4.0s</span></div>
+        <div class="cueload" style="background:rgba(228,67,67,.35);">
+          <span>Lighting&nbsp; ·&nbsp; Blackout</span><span class="mono">−9.4s</span></div>
+        <div class="cueload" style="background:rgba(255,122,69,.35);">
+          <span>Choreo&nbsp; ·&nbsp; Mở visual</span><span class="mono">−15.0s</span></div>
+        <div class="cueload" style="background:rgba(43,185,255,.35);">
+          <span>Audio&nbsp; ·&nbsp; Chorus</span><span class="mono">−22.0s</span></div>
+      </div>
+
+      <div style="flex-grow:1;"></div>
+    </div>
+
+    <div class="grp" style="width:670px; box-sizing:border-box; padding:16px 10px 10px;
+                            display:flex; flex-direction:column; gap:8px; min-height:0;">
+      <div class="grp-title">Cue / Marker Editor</div>
+
+      <div style="display:flex; align-items:center;">
+        <span style="color:#C3CBBA;">Cue Time</span>
+        <div style="flex-grow:1;"></div>
+        <span class="mono" style="color:#46DC00; font-size:18px; font-weight:600;">00:01:13:00 / 00:04:30:00</span>
+      </div>
+
+      <div style="display:flex; gap:8px;">
+        <div class="btn">Add Cue at Playhead</div>
+        <div class="btn">Import Cue</div>
+        <div class="btn">Export Cue</div>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:10px; height:28px;">
+        <div class="pill pill-ok" style="display:flex; align-items:center; gap:7px;">
+          <span class="dot" style="background:#46DC00;"></span>ĐÃ ĐỒNG BỘ
+        </div>
+        <div style="flex-grow:1;"></div>
+        <span style="color:#84B7FF; font-size:12px;">Huy đang ở Cue 20</span>
+        <div class="btn" style="padding:4px 10px; font-size:12px;">Đi tới cue</div>
+      </div>
+
+      <div class="tbl" style="flex-grow:1; min-height:0;">
+        <div class="th">
+          <div>TIME</div><div>CUE TYPE</div><div>CUE</div><div>LABEL</div>
+        </div>
+
+        <div class="tr">
+          <div class="mono">00:00:52:00</div><div class="ctype" style="color:#ff7a45;">Choreo</div>
+          <div>Cue 01</div><div>Mở sân khấu</div></div>
+        <div class="tr">
+          <div class="mono">00:00:58:00</div><div class="ctype" style="color:#2bb9ff;">Audio</div>
+          <div>Cue 02</div><div>Intro</div></div>
+        <div class="tr sel">
+          <div class="mono">00:01:04:00</div><div class="ctype" style="color:#7a43ff;">Video</div>
+          <div>Cue 03</div><div>Verse</div></div>
+        <div class="tr">
+          <div class="mono">00:01:10:00</div><div class="ctype" style="color:#3d74ff;">Notes</div>
+          <div>Cue 04</div><div>Chuyển cảnh</div></div>
+        <div class="tr">
+          <div class="mono">00:01:17:00</div><div class="ctype" style="color:#1fd95d;">Pyro</div>
+          <div>Cue 05</div><div>Khói vào</div></div>
+        <div class="tr">
+          <div class="mono">00:01:22:12</div><div class="ctype" style="color:#e44343;">Lighting</div>
+          <div>Cue 06</div><div>Blackout</div></div>
+        <div class="tr">
+          <div class="mono">00:01:26:00</div><div class="ctype" style="color:#ff7a45;">Choreo</div>
+          <div>Cue 07</div><div>Mở visual</div></div>
+        <div class="tr">
+          <div class="mono">00:01:35:00</div><div class="ctype" style="color:#2bb9ff;">Audio</div>
+          <div>Cue 08</div><div>Chorus</div></div>
+        <div class="tr">
+          <div class="mono">00:01:42:00</div><div class="ctype" style="color:#7a43ff;">Video</div>
+          <div>Cue 09</div><div>Solo</div></div>
+        <div class="tr">
+          <div class="mono">00:01:50:00</div><div class="ctype" style="color:#3d74ff;">Notes</div>
+          <div>Cue 10</div><div>Dừng khói</div></div>
+        <div class="tr">
+          <div class="mono">00:01:57:00</div><div class="ctype" style="color:#1fd95d;">Pyro</div>
+          <div>Cue 11</div><div>Bridge</div></div>
+        <div class="tr">
+          <div class="mono">00:02:05:00</div><div class="ctype" style="color:#e44343;">Lighting</div>
+          <div>Cue 12</div><div>Kết đoạn</div></div>
+
+        <div style="position:absolute; left:0; right:0; bottom:0; height:34px;
+                    background:linear-gradient(180deg, rgba(7,10,5,0) 0%, rgba(7,10,5,.92) 55%);
+                    display:flex; align-items:flex-end; justify-content:center; padding-bottom:6px;">
+          <div style="display:flex; align-items:center; gap:8px; padding:3px 10px; border-radius:12px;
+                      background:#101A22; border:1px solid #84B7FF;">
+            <span class="dot" style="background:#84B7FF;"></span>
+            <span style="color:#84B7FF; font-size:11px;">Huy ở Cue 20 · phía dưới 8 dòng</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="color:#8f9f85; font-size:12px;">Bạn đang chọn : Cue 03 — bảng không tự cuộn theo người khác</div>
+    </div>
+  </div>
+
+  <div style="display:flex; align-items:center;">
+    <span style="color:#aabb9b; font-size:12px;">Nhạc đã khớp&nbsp; ·&nbsp; Cue đã cập nhật lúc 21:04</span>
+    <div style="flex-grow:1;"></div>
+    <span style="color:#a2aba0; font-size:12px;">Phát nhạc độc lập trên từng máy</span>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

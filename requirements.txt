@@ -1,0 +1,15 @@
+# Tracyy V2 runtime dependencies.
+#
+# Lower bounds are the oldest release that carries an API or fix V2 relies on;
+# upper bounds stop at the next major so a surprise release cannot break a
+# build the night before a show. Verified against the versions in the comments.
+
+PySide6>=6.9,<7          # Qt 6.9+; tested on 6.11.1
+numpy>=2.1,<3            # numpy 2 API; tested on 2.4.6
+sounddevice>=0.5.1,<1    # PortAudio bindings; tested on 0.5.5
+soundfile>=0.13,<1       # libsndfile bindings; tested on 0.14.0
+soxr>=0.5,<2             # band-limited resampling; tested on 1.1.0
+av>=14,<19               # FFmpeg bindings for codecs libsndfile cannot open; tested on 18.0.0
+certifi>=2025.1.31       # CA bundle for the licence endpoint
+cryptography>=45,<47     # licence cache + admin-USB token crypto; tested on 45.0.7
+segno>=1.6,<2            # QR for the cue-viewer address; pure Python, no deps

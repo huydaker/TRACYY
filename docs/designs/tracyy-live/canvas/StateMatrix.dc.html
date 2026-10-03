@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin:0; background:#070A05; color:#E1E5DA;
+           font-family:"Helvetica Neue",-apple-system,"Segoe UI",system-ui,sans-serif; font-size:13px; }
+    a { color:#8BD66A; } a:hover { color:#B4EE9A; }
+    .mono { font-family:Consolas,"SF Mono",Menlo,monospace; }
+    .h { color:#B8C9A8; font-size:11px; font-weight:700; letter-spacing:1.2px; }
+    .note { color:#8f9f85; font-size:12px; line-height:1.55; }
+    .grid { border:1px solid #223313; border-radius:10px; overflow:hidden; }
+    .row { display:grid; grid-template-columns:186px 214px 196px 250px 96px 1fr;
+           border-bottom:1px solid #1B2712; align-items:center; }
+    .row > div { padding:9px 10px; font-size:12px; }
+    .head { background:#142307; border-bottom:1px solid #315017; }
+    .head > div { color:#F2F2F2; font-size:11px; font-weight:600; letter-spacing:.6px; }
+    .a { background:#0B1007; } .b { background:#080D05; }
+    .pill { display:inline-flex; align-items:center; gap:6px; padding:4px 8px; border-radius:5px;
+            font-weight:700; font-size:10px; border:1px solid #3F463C; background:#20241F; color:#D8DDD4; }
+    .ok { background:#173B24; border-color:#2F7A44; color:#DDFBE5; }
+    .wait { background:#3B3217; border-color:#8A7225; color:#FFF1B8; }
+    .err { background:#481D1D; border-color:#9A3B3B; color:#FFDADA; }
+    .dot { width:7px; height:7px; border-radius:4px; display:inline-block; flex:none; }
+    .on { color:#8BD66A; } .off { color:#B06A6A; }
+    .src { color:#9BA894; font-size:11px; }
+    .card { border:1px solid #223313; border-radius:10px; background:#0B1007; padding:14px 16px; }
+  </style>
+</helmet>
+
+<div style="width:1180px; height:900px; box-sizing:border-box; padding:24px 24px 20px;
+            background:#070A05; display:flex; flex-direction:column; gap:14px;">
+
+  <div style="display:flex; align-items:baseline; gap:12px;">
+    <span style="color:#edf5e8; font-size:18px; font-weight:600;">Trạng thái tài liệu — cái gì hiện, cái gì khoá</span>
+    <span class="note">T2 · mỗi dòng là một câu trả lời của máy chính, không phải một phỏng đoán của máy khách</span>
+  </div>
+
+  <div class="grid">
+    <div class="row head">
+      <div>TÌNH HUỐNG</div><div>TÍN HIỆU</div><div>CHIP TRẠNG THÁI</div>
+      <div>BẢNG CUE</div><div>SỬA CUE</div><div>HIỆN DIỆN</div>
+    </div>
+
+    <div class="row a">
+      <div>Đã đồng bộ</div>
+      <div class="src mono">ok · acked = revision</div>
+      <div><span class="pill ok"><span class="dot" style="background:#46DC00;"></span>ĐÃ ĐỒNG BỘ</span></div>
+      <div>Bình thường</div>
+      <div class="on">bật</div>
+      <div>đầy đủ</div>
+    </div>
+
+    <div class="row b">
+      <div>Đang gửi thao tác</div>
+      <div class="src mono">chưa có ACK</div>
+      <div><span class="pill wait"><span class="dot" style="background:#E0B341;"></span>ĐANG GỬI 1</span></div>
+      <div>Dòng nét đứt vàng, chữ mờ 62%</div>
+      <div class="on">bật</div>
+      <div>đầy đủ</div>
+    </div>
+
+    <div class="row a">
+      <div>Người khác đã sửa cue đó</div>
+      <div class="src mono">stale_revision</div>
+      <div><span class="pill err"><span class="dot" style="background:#E86A6A;"></span>CHƯA NHẬN</span></div>
+      <div>Viền đỏ + băng lý do có diff, giữ bản máy chính</div>
+      <div class="on">bật</div>
+      <div>đầy đủ</div>
+    </div>
+
+    <div class="row b">
+      <div>Không đủ quyền</div>
+      <div class="src mono">forbidden</div>
+      <div><span class="pill">CHỈ XEM</span></div>
+      <div>Bình thường, không có ô sửa được</div>
+      <div class="off">tắt</div>
+      <div>đầy đủ</div>
+    </div>
+
+    <div class="row a">
+      <div>Quyền bị thu hồi giữa chừng</div>
+      <div class="src mono">role đổi ở heartbeat</div>
+      <div><span class="pill err">QUYỀN ĐÃ ĐỔI</span></div>
+      <div>Đóng editor đang mở, bỏ thao tác đang chờ</div>
+      <div class="off">tắt</div>
+      <div>đầy đủ</div>
+    </div>
+
+    <div class="row b">
+      <div>Thao tác thuộc phiên cũ</div>
+      <div class="src mono">wrong_session</div>
+      <div><span class="pill err">CẦN NỐI LẠI</span></div>
+      <div>Khoá tới khi nhận phiên mới</div>
+      <div class="off">tắt</div>
+      <div>ẩn</div>
+    </div>
+
+    <div class="row a">
+      <div>Dữ liệu thao tác sai</div>
+      <div class="src mono">invalid</div>
+      <div><span class="pill err">LỖI THAO TÁC</span></div>
+      <div>Hoàn tác tại chỗ, nêu đúng trường sai</div>
+      <div class="on">bật</div>
+      <div>đầy đủ</div>
+    </div>
+
+    <div class="row b">
+      <div>Máy chính không ghi được nhật ký</div>
+      <div class="src mono">journal</div>
+      <div><span class="pill err"><span class="dot" style="background:#E86A6A;"></span>MÁY CHÍNH LỖI GHI</span></div>
+      <div>Không đổi gì — không ACK thì không có cue</div>
+      <div class="on">bật, có cảnh báo</div>
+      <div>đầy đủ</div>
+    </div>
+
+    <div class="row a">
+      <div>Bị rớt khỏi danh sách</div>
+      <div class="src mono">rejoin = true</div>
+      <div><span class="pill wait">ĐANG NỐI LẠI</span></div>
+      <div>Khoá, giữ nguyên nội dung đang xem</div>
+      <div class="off">tắt</div>
+      <div>ẩn</div>
+    </div>
+
+    <div class="row b">
+      <div>Mất liên lạc</div>
+      <div class="src mono">quá hạn heartbeat</div>
+      <div><span class="pill err"><span class="dot" style="background:#E86A6A;"></span>MẤT LIÊN LẠC</span></div>
+      <div>Phủ mờ, chỉ đọc, thao tác chờ được giữ lại</div>
+      <div class="off">tắt</div>
+      <div>giữ tên, bỏ vị trí</div>
+    </div>
+
+    <div class="row a" style="border-bottom:none;">
+      <div>Nối lại nhưng còn thiếu thao tác</div>
+      <div class="src mono">acked &lt; revision</div>
+      <div><span class="pill wait"><span class="dot" style="background:#E0B341;"></span>ĐANG ĐỒNG BỘ LẠI</span></div>
+      <div>Phủ mờ nhẹ, áp dụng một lần khi xong</div>
+      <div class="off">tắt</div>
+      <div>chạy lại ngay</div>
+    </div>
+  </div>
+
+  <div style="display:flex; gap:14px;">
+    <div class="card" style="width:530px;">
+      <div class="h">BỐN NGÔN NGỮ MÀU — KHÔNG TRỘN</div>
+      <div style="margin-top:12px; display:flex; flex-direction:column; gap:10px; font-size:12px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="display:inline-block; width:70px; height:20px; border-radius:5px;
+                       border:1.2px solid #F297C1;"></span>
+          <span style="color:#D6DECC;">màu người — <span class="note">ai đang ở đâu (T4)</span></span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="display:inline-block; width:70px; height:20px; border-radius:5px;
+                       border:1px dashed #8A7225; background:#3B3217;"></span>
+          <span style="color:#D6DECC;">vàng nét đứt — <span class="note">của bạn, chưa được nhận (T2)</span></span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="display:inline-block; width:70px; height:20px; border-radius:5px;
+                       border:1px solid #9A3B3B; background:#481D1D;"></span>
+          <span style="color:#D6DECC;">đỏ — <span class="note">bị từ chối hoặc mất liên lạc</span></span>
+        </div>
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="display:inline-block; width:70px; height:20px; border-radius:5px;
+                       border:1px solid #2F7A44; background:#173B24;"></span>
+          <span style="color:#D6DECC;">xanh — <span class="note">đã vào bản chung, mọi máy thấy như nhau</span></span>
+        </div>
+      </div>
+      <div class="note" style="margin-top:12px; padding-top:10px; border-top:1px solid #1B2712;">
+        Ba màu trạng thái lấy nguyên từ bảng màu đang dùng cho Input Timecode
+        (<span class="mono">locked / waiting / error</span>), không thêm màu mới vào app.
+      </div>
+    </div>
+
+    <div class="card" style="flex-grow:1;">
+      <div class="h">HAI ĐIỀU RÀNG BUỘC CÁCH VẼ</div>
+      <div style="margin-top:12px; display:flex; flex-direction:column; gap:12px; font-size:12px; color:#D6DECC;">
+        <div>
+          <span style="color:#EBDCAF; font-weight:600;">Chỉ mở khoá sửa khi cả ba cùng đúng:</span>
+          nối được máy chính, còn quyền, và bản tài liệu đã khớp. Nối lại được mạng mà chưa
+          áp dụng xong thao tác thiếu thì vẫn khoá — đây là chỗ dễ làm sai nhất.
+        </div>
+        <div>
+          <span style="color:#EBDCAF; font-weight:600;">Hiệu ứng chỉ cho thao tác lẻ:</span>
+          cue mới hiện trong ~200 ms, viền và tên người tạo giữ ~2 giây, cue dời thì trượt ngắn.
+          Gói bắt kịp sau khi nối lại <span class="mono">không</span> phát lại hiệu ứng —
+          áp dụng một lần rồi thôi. Có tuỳ chọn giảm chuyển động.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>
